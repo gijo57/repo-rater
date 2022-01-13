@@ -7,9 +7,6 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 20,
     marginHorizontal: 10
-  },
-  text: {
-    color: 'white'
   }
 });
 
@@ -17,7 +14,7 @@ const NavTab = ({ contents, path }) => {
   return (
     <View style={styles.container}>
       <Link exact to={path}>
-        <Text fontWeight="bold" fontSize="subheading" style={styles.text}>
+        <Text fontWeight="bold" fontSize="subheading" color="white">
           {contents}
         </Text>
       </Link>
