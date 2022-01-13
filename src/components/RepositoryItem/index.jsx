@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
-import Text from './Text';
-import theme from '../theme';
-import RepositoryItemStats from './RepositoryItemStats';
+import Text from '../Text';
+import theme from '../../theme';
+import RepositoryItemStats from '../RepositoryItemStats';
+import LanguageTag from './LanguageTag';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,14 +56,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const LanguageTag = ({ language }) => {
-  return (
-    <View style={styles.langContainer}>
-      <Text style={styles.text}>{language}</Text>
-    </View>
-  );
-};
-
 const RepositoryItem = ({
   item: {
     fullName,
@@ -84,7 +77,7 @@ const RepositoryItem = ({
             {fullName}
           </Text>
           <Text style={styles.description}>{description}</Text>
-          <LanguageTag language={language} />
+          <LanguageTag styles={styles} language={language} />
         </View>
       </View>
       <View style={[styles.statsContainer, styles.element]}>
