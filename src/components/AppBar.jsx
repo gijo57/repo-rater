@@ -16,12 +16,16 @@ const styles = StyleSheet.create({
   }
 });
 
-const AppBar = () => {
+const AppBar = ({ user }) => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal contentContainerStyle={styles.scrollView}>
         <NavTab contents="Repositories" path="/" />
-        <NavTab contents="Sign In" path="/signin" />
+        {user ? (
+          <NavTab contents="Sign Out" path="/signin" />
+        ) : (
+          <NavTab contents="Sign In" path="/signin" />
+        )}
       </ScrollView>
     </View>
   );

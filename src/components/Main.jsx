@@ -5,6 +5,7 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
 import theme from '../theme';
+import useAuthorized from '../hooks/useAuthorized';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,9 +16,11 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
+  const authenticatedUser = useAuthorized();
+
   return (
     <View style={styles.container}>
-      <AppBar />
+      <AppBar user={authenticatedUser} />
       <Switch>
         <Route path="/" exact>
           <RepositoryList />
