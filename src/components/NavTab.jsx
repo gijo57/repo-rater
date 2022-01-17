@@ -19,7 +19,6 @@ const NavTab = ({ contents, path }) => {
   const apolloClient = useApolloClient();
 
   const handleLogout = async () => {
-    console.log('hols');
     await authStorage.removeAccessToken();
     await apolloClient.resetStore();
     history.push('/signin');
