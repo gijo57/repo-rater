@@ -75,7 +75,6 @@ const RepositoryItem = ({
     reviewCount,
     ratingAverage,
     ownerAvatarUrl,
-    id,
     url
   },
   isSingleRepo
