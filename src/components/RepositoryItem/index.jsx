@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Pressable } from 'react-native';
 import Text from '../Text';
 import theme from '../../theme';
 import RepositoryItemStats from '../RepositoryItemStats';
 import LanguageTag from './LanguageTag';
+import * as Linking from 'expo-linking';
 
 const styles = StyleSheet.create({
   container: {
@@ -53,6 +54,14 @@ const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
     justifyContent: 'space-between'
+  },
+  ghButton: {
+    display: 'flex',
+    backgroundColor: theme.colors.primary,
+    paddingVertical: 10,
+    marginVertical: 15,
+    alignItems: 'center',
+    borderRadius: 5
   }
 });
 
@@ -65,9 +74,16 @@ const RepositoryItem = ({
     forksCount,
     reviewCount,
     ratingAverage,
-    ownerAvatarUrl
-  }
+    ownerAvatarUrl,
+    id,
+    url
+  },
+  isSingleRepo
 }) => {
+  const handlePress = () => {
+    Linking.openURL(url);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -86,6 +102,13 @@ const RepositoryItem = ({
         <RepositoryItemStats amount={reviewCount} statistic="Reviews" />
         <RepositoryItemStats amount={ratingAverage} statistic="Rating" />
       </View>
+      {isSingleRepo && (
+        <Pressable style={styles.ghButton} onPress={handlePress}>
+          <Text fontWeight="bold" color="white">
+            Open in GitHub
+          </Text>
+        </Pressable>
+      )}
     </View>
   );
 };
